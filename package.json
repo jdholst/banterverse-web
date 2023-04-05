@@ -1,0 +1,50 @@
+{
+  "name": "convoverse-web",
+  "version": "1.0.0",
+  "description": "A user-friendly web application built with React, allowing users to create, customize, and interact with AI-powered chatbots that roleplay as various characters or public figures.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "keywords": [
+    "chatbot",
+    "react",
+    "component"
+  ],
+  "author": "Jacob Holst",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.3.1",
+    "@mui/material": "^5.3.0",
+    "@mui/system": "^5.3.0",
+    "@reduxjs/toolkit": "^1.9.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^8.0.5",
+    "react-scripts": "^5.0.0",
+    "redux": "^4.2.1",
+    "typescript": "^4.4.4"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
