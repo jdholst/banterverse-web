@@ -10,8 +10,8 @@ import {
   Fab,
 } from '@mui/material';
 import { TextSnippet, Chat } from '@mui/icons-material';
-import { ChatbotDTO } from './chatbot-service';
-import { getRandomPeople, generateDescription } from './chatbot-service';
+import { ChatbotDTO } from './store/types';
+import { getRandomPeople, generateDescription } from './store/chatbot-service';
 import { styled } from '@mui/system';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from './store';

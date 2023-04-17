@@ -5,6 +5,7 @@ export type ChatbotState = {
   chatbot1: ChatbotDTO;
   chatbot2: ChatbotDTO;
   chatbotsConfigured: boolean;
+  currentConversationId: string;
 };
 
 export type ChatbotDTO = {
@@ -13,19 +14,31 @@ export type ChatbotDTO = {
   avatarUrl?: string;
 }
 
-export type StartConversationRequest = {
+export type StartConversationRequestSettings = {
+  enableAvatars?: boolean;
+  randomize?: boolean;
+};
+
+export type StartConversationParams = {
   chatbot1: ChatbotDTO;
   chatbot2: ChatbotDTO;
 }
 
+export type StartConversationRequest = {
+  chatbot1: ChatbotDTO;
+  chatbot2: ChatbotDTO;
+  settings?: StartConversationRequestSettings;
+}
+
 export type StartConversationResponse = {
+  conversationId: string;
   chatbot1: ChatbotDTO;
   chatbot2: ChatbotDTO;
   sceneDescription: string;
 }
 
-export type ContinueConversationRequest = {
-  name: string;
+export type ContinueConversationParams = {
+  conversationId: string;
 }
 
 export type ChatResponse = {

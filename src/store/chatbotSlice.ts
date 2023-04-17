@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { startConversation, continueConversation } from '../chatbot-service';
-import { ChatbotState, StartConversationRequest } from './types';
+import { startConversation, continueConversation } from './chatbot-service';
+import { ChatbotState, ContinueConversationParams, StartConversationParams, StartConversationRequest } from './types';
 
 export const startChatbotConversation = createAsyncThunk(
   'chatbot/startConversation',
-  async (payload: StartConversationRequest & { enableAvatars?: boolean }, { rejectWithValue }) => {
+  async (payload: StartConversationParams, { rejectWithValue }) => {
     try {
-      const response = await startConversation(payload.chatbot1, payload.chatbot2, payload.enableAvatars);
+      const response = await startConversation(payload.chatbot1, payload.chatbot2);
       return response;
     } catch (error: any) {
       return rejectWithValue(error.message);
@@ -16,9 +16,9 @@ export const startChatbotConversation = createAsyncThunk(
 
 export const continueChatbotConversation = createAsyncThunk(
   'chatbot/continueConversation',
-  async (_, { rejectWithValue }) => {
+  async ({ conversationId }: ContinueConversationParams, { rejectWithValue }) => {
     try {
-      const response = await continueConversation();
+      const response = await continueConversation(conversationId);
       return response;
     } catch (error: any) {
       return rejectWithValue(error.message);
@@ -32,6 +32,7 @@ const initialState: ChatbotState = {
   isResponding: false,
   chatbot1: { name: '', description: '' },
   chatbot2: { name: '', description: '' },
+  currentConversationId: '',
   chatbotsConfigured: false,
 };
 
@@ -52,6 +53,7 @@ const chatbotSlice = createSlice({
       .addCase(startChatbotConversation.fulfilled, (state, action) => {
         state.chatbot1 = action.payload.chatbot1;
         state.chatbot2 = action.payload.chatbot2;
+        state.currentConversationId = action.payload.conversationId;
         state.isLoading = false;
       })
       .addCase(continueChatbotConversation.pending, (state) => {

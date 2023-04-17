@@ -179,6 +179,7 @@ const Chatbot: React.FC = () => {
     chatbot1,
     chatbot2,
     chatbotsConfigured,
+    currentConversationId,
   } = useSelector((state: RootState) => state.chatbot);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -206,7 +207,7 @@ const Chatbot: React.FC = () => {
 
   const handleConversation = async () => {
     // setInputText('');
-    await dispatch(continueChatbotConversation());
+    await dispatch(continueChatbotConversation({ conversationId: currentConversationId }));
   };
 
   // const handleKeyPress = async (event: React.KeyboardEvent<HTMLInputElement>) => {
