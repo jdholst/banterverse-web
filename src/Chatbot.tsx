@@ -292,7 +292,7 @@ const Chatbot: React.FC = () => {
                       )
                     }
                   />
-                  {role === 'chatbot' && index === outputMessages.length - 1 && !isLoading && (
+                  {role === 'chatbot' && index === outputMessages.length - 1 && !isResponding && (
                     <ContinueConversationButton 
                       onClick={handleSendMessage} 
                       variant="contained"
