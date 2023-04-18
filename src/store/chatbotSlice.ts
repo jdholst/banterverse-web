@@ -6,7 +6,7 @@ export const startChatbotConversation = createAsyncThunk(
   'chatbot/startConversation',
   async (payload: StartConversationParams, { rejectWithValue }) => {
     try {
-      const response = await startConversation(payload.chatbot1, payload.chatbot2);
+      const response = await startConversation(payload.chatbot1, payload.chatbot2, { enableAvatars: true });
       return response;
     } catch (error: any) {
       return rejectWithValue(error.message);
